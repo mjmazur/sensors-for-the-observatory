@@ -13,11 +13,11 @@ ser = serial.Serial(port, baud)
 line = ser.readline()
 line = line.decode('utf-8')
 
-print('Unix Time     ' + line)
+# print('Unix Time     ' + line)
 
 while True:
 	line = ser.readline()
 	line = line.decode('utf-8')
-	print(str(time()) + ' ' + line)
-	print(strftime("%a, %d %b %Y %H:%M:%S +0000", gmtime()))
-	f.write(str(time()) + ' ' + line)
+	print(str(time()) + ' ' + strftime('%H:%M:%S', gmtime()) + ' ' + line)
+	print(strftime('%H:%M:%S', gmtime()))
+	f.write(str(time()) + ' ' + line) + ' '
