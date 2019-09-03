@@ -19,5 +19,5 @@ while True:
 	line = ser.readline()
 	line = line.decode('utf-8')
 	print(str(time()) + ' ' + line)
-	print(strftime(gmtime()))
+	print(strftime("%a, %d %b %Y %H:%M:%S +0000", gmtime()))
 	f.write(str(time()) + ' ' + line)
