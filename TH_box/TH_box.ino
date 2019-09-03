@@ -6,20 +6,20 @@
 #include <SPI.h>
 #include "DHT.h"
 
-#define DHT1PIN 2     // what digital pin we're connected to
-#define DHT2PIN 3
+#define DHT1PIN 2     // Digital pin for DHT sensor #1
+#define DHT2PIN 3     // Digital pin for DHT sensor #2
 
 // Uncomment whatever type you're using!
 #define DHTTYPE DHT11   // DHT 11
 //#define DHTTYPE DHT22   // DHT 22  (AM2302), AM2321
 //#define DHTTYPE DHT21   // DHT 21 (AM2301)
 
-#define ONE_WIRE_BUS 4
+#define ONE_WIRE_BUS 4  // Digital pin that the one-wire temperature sensors are sitting on
 
-#define RELAY1 6
+#define RELAY1 6        // Relays can be turned on and off according to T & H
 #define RELAY2 7
 
-#define LCD_LIGHT_PIN A4
+#define LCD_LIGHT_PIN A4 // Not actually used
 #define buttonPin 5
 
 // For the breakout, you can use any 2 or 3 pins
