@@ -8,18 +8,20 @@
 
 #define DHT1PIN 2     // Digital pin for DHT sensor #1
 #define DHT2PIN 3     // Digital pin for DHT sensor #2
+#define DHT1PIN 2     // Digital pin for first DHT sensor
+#define DHT2PIN 3     // Digital pin for second DHT sensor
 
 // Uncomment whatever type you're using!
 #define DHTTYPE DHT11   // DHT 11
 //#define DHTTYPE DHT22   // DHT 22  (AM2302), AM2321
 //#define DHTTYPE DHT21   // DHT 21 (AM2301)
 
-#define ONE_WIRE_BUS 4  // Digital pin that the one-wire temperature sensors are sitting on
+#define ONE_WIRE_BUS 4  // Pin that one-wire temperature sensors are sitting on
 
-#define RELAY1 6        // Relays can be turned on and off according to T & H
+#define RELAY1 6
 #define RELAY2 7
 
-#define LCD_LIGHT_PIN A4 // Not actually used
+#define LCD_LIGHT_PIN A4
 #define buttonPin 5
 
 // For the breakout, you can use any 2 or 3 pins
@@ -231,5 +233,5 @@ void tftPrintTest() {
     cycleCnt = 2;
   }
   }
-  //delay(5000);
+  delay(5000);
 }
