@@ -1,6 +1,6 @@
 import serial
 import matplotlib.pyplot as plt
-import numpy as numpy
+import numpy as np
 from time import gmtime, strftime, time
 
 port = '/dev/ttyACM0' # put the correct serial port in here
@@ -19,3 +19,5 @@ while True:
 	line = ser.readline()
 	line = line.decode('utf-8')
 	print(str(time()) + ' ' + line)
+	print(str(gmtime()))
+	f.write(str(time()) + ' ' + line)
