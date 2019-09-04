@@ -10,7 +10,7 @@ baud = 9600
 thedate = strftime('%Y%m%d', gmtime())
 write_path = '/home/emccd/enclosure-logs/' + thedate +'/output.txt'
 
-print(os.listdir('/home/emccd/enclosure-logs/' + thedate))
+# print(os.listdir('/home/emccd/enclosure-logs/' + thedate))
 
 f = open(write_path, 'w+')
 ser = serial.Serial(port, baud)
@@ -22,8 +22,7 @@ line = line.decode('utf-8')
 
 while True:
 	line = ser.readline()
-	print(line)
 	line = line.decode('utf-8')
-	#print(str(time()) + ' ' + strftime('%H:%M:%S', gmtime()) + ' ' + line)
+	print(str(time()) + ' ' + strftime('%H:%M:%S', gmtime()) + ' ' + line)
 	# print(strftime('%H:%M:%S', gmtime()))
 	# f.write(str(time()) + ' ' + line) + ' '
