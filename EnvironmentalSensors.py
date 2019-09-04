@@ -34,7 +34,8 @@ while True:
 	print(nline)
 
 	# print(str(time()) + ' ' + strftime('%H:%M:%S', gmtime()) + ' ' + line)
-	test = np.fromstring(strftime('%H %M %S', gmtime()), sep=' ')
-	print(test)
+	tnow = np.fromstring(strftime('%H %M %S', gmtime()), sep=' ')
+	secs = tnow[0] + tnow[1]/60.0 + tnow[2]/3600.0
+	print(secs)
 	# print(strftime('%H:%M:%S', gmtime()))
 	# f.write(str(time()) + ' ' + line) + ' '
