@@ -20,11 +20,19 @@ line = line.decode('utf-8')
 
 # print('Unix Time     ' + line)
 
+nline = np.empty(8)
+
 while True:
 	line = ser.readline()
 	line = line.decode('utf-8')
+	values = np.fromstring(line, sep=' ')
+	nline[0] = time()
+	nline[1] = strftime('%H:%M:%S', gmtime())
+	for i in range(2,8):
+		nline[i] = values[i-2]
+
+	print(nline)
+
 	print(str(time()) + ' ' + strftime('%H:%M:%S', gmtime()) + ' ' + line)
-	test = np.fromstring(line, sep=' ')
-	print(line[0])
 	# print(strftime('%H:%M:%S', gmtime()))
 	# f.write(str(time()) + ' ' + line) + ' '
