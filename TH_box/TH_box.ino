@@ -56,7 +56,7 @@ float T0, T1, T2, T3;
 void setup(void) {
   Serial.begin(9600);
   
-  Serial.println("Fluid\tShed\tF_t\tF_h\tG_t\tG_h");
+  // Serial.println("Fluid\tShed\tF_t\tF_h\tG_t\tG_h");
   sensors.begin();
 
   // Use this initializer if you're using a 1.8" TFT
@@ -225,7 +225,7 @@ void tftPrintTest() {
   // Delay for 200ms and loop 10 times.
   for (int i=0; i<10; i++){
   delay(200);
-  buttonState = digitalRead(buttonPin);
+  buttonState = digitalRead(buttonPin); 
   if (buttonState == HIGH && cycleCnt < 2) {
     digitalWrite(LCD_LIGHT_PIN, HIGH);
     cycleCnt = 2;
