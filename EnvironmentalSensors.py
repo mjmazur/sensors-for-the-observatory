@@ -27,10 +27,15 @@ while True:
 	line = ser.readline()
 	line = line.decode('utf-8')
 
+	print(line)
+
 	tnow = np.fromstring(strftime('%H %M %S', gmtime()), sep=' ')
 	secs = tnow[0] + tnow[1]/60.0 + tnow[2]/3600.0
 
 	values = np.fromstring(line, sep=' ')
+
+	print(values[0])
+
 	nline[0] = time()
 	nline[1] = secs
 
