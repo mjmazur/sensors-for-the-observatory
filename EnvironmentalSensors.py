@@ -34,7 +34,7 @@ while True:
 	print(nline)
 
 	# print(str(time()) + ' ' + strftime('%H:%M:%S', gmtime()) + ' ' + line)
-	test = np.fromstring(strftime('%H %M %S', gmtime()))
+	test = np.fromstring(strftime('%H %M %S', gmtime()), sep=' ')
 	print(test)
 	# print(strftime('%H:%M:%S', gmtime()))
 	# f.write(str(time()) + ' ' + line) + ' '
