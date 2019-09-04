@@ -25,6 +25,6 @@ while True:
 	line = line.decode('utf-8')
 	print(str(time()) + ' ' + strftime('%H:%M:%S', gmtime()) + ' ' + line)
 	test = np.fromstring(line, sep=' ')
-	print(test[0])
+	print(line[0])
 	# print(strftime('%H:%M:%S', gmtime()))
 	# f.write(str(time()) + ' ' + line) + ' '
