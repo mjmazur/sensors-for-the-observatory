@@ -32,6 +32,7 @@ while True:
 	values = np.fromstring(line, sep=' ')
 	nline[0] = time()
 	nline[1] = secs
+
 	for i in range(2,8):
 		nline[i] = values[i-2]
 
@@ -39,6 +40,5 @@ while True:
 
 	# print(str(time()) + ' ' + strftime('%H:%M:%S', gmtime()) + ' ' + line)
 
-	print(secs)
 	# print(strftime('%H:%M:%S', gmtime()))
 	# f.write(str(time()) + ' ' + line) + ' '
