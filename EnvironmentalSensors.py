@@ -43,7 +43,7 @@ while True:
 		print(i)
 		nline[i] = values[i-2]
 
-	narray = np.append(narray, nline, axis=0)
+	narray = np.append(narray, nline, axis=1)
 
 	print(narray.shape)
 
