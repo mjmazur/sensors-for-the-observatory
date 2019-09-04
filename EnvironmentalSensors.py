@@ -21,7 +21,7 @@ line = line.decode('utf-8')
 # print('Unix Time     ' + line)
 
 nline = np.empty(8)
-narray = np.empty(8)
+narray = []
 
 while True:
 	line = ser.readline()
@@ -34,7 +34,7 @@ while True:
 
 	values = np.fromstring(line, sep=' ')
 
-	print(values[0])
+	# print(values[0])
 
 	nline[0] = time()
 	nline[1] = secs
@@ -43,7 +43,7 @@ while True:
 		print(i)
 		nline[i] = values[i-2]
 
-	narray = np.append(narray, nline, axis=0)
+	narray = np.vstack((narray, nline))
 
 	print(narray.shape)
 
