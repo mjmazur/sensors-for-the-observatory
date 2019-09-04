@@ -25,17 +25,20 @@ nline = np.empty(8)
 while True:
 	line = ser.readline()
 	line = line.decode('utf-8')
+
+	tnow = np.fromstring(strftime('%H %M %S', gmtime()), sep=' ')
+	secs = tnow[0] + tnow[1]/60.0 + tnow[2]/3600.0
+
 	values = np.fromstring(line, sep=' ')
 	nline[0] = time()
-	# nline[1] = strftime('%H:%M:%S', gmtime())
-	# for i in range(2,8):
-	# 	nline[i] = values[i-2]
+	nline[1] = secs
+	for i in range(2,8):
+		nline[i] = values[i-2]
 
 	print(nline)
 
 	# print(str(time()) + ' ' + strftime('%H:%M:%S', gmtime()) + ' ' + line)
-	tnow = np.fromstring(strftime('%H %M %S', gmtime()), sep=' ')
-	secs = tnow[0] + tnow[1]/60.0 + tnow[2]/3600.0
+
 	print(secs)
 	# print(strftime('%H:%M:%S', gmtime()))
 	# f.write(str(time()) + ' ' + line) + ' '
