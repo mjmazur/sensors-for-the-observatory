@@ -35,6 +35,7 @@ while True:
 	nline[1] = secs
 
 	for i in range(2,8):
+		print(i)
 		nline[i] = values[i-2]
 
 	narray = np.append(narray,nline)
