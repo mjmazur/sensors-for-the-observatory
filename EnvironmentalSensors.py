@@ -45,7 +45,7 @@ while True:
 
 	narray = np.append(narray, nline, axis=0)
 
-	print(narray)
+	print(narray.shape)
 
 	# print(str(time()) + ' ' + strftime('%H:%M:%S', gmtime()) + ' ' + line)
 
