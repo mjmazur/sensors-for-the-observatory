@@ -6,8 +6,6 @@
 #include <SPI.h>
 #include "DHT.h"
 
-#define DHT1PIN 2     // Digital pin for DHT sensor #1
-#define DHT2PIN 3     // Digital pin for DHT sensor #2
 #define DHT1PIN 2     // Digital pin for first DHT sensor
 #define DHT2PIN 3     // Digital pin for second DHT sensor
 

@@ -7,6 +7,8 @@ port = '/dev/ttyACM0' # put the correct serial port in here
 baud = 9600
 write_path = 'output.txt'
 
+print(strftime('%Y%m%d', gmtime()))
+
 f = open(write_path, 'w+')
 ser = serial.Serial(port, baud)
 
