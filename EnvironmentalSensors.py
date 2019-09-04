@@ -6,11 +6,11 @@ from time import gmtime, strftime, time
 
 port = '/dev/ttyACM0' # put the correct serial port in here
 baud = 9600
-write_path = 'output.txt'
 
 thedate = strftime('%Y%m%d', gmtime())
+write_path = '/home/emccd/enclosure-logs/' + thedate +'/output.txt'
 
-print(os.listdir('~/enclosure-logs/' + thedate))
+print(os.listdir('/home/emccd/enclosure-logs/' + thedate))
 
 f = open(write_path, 'w+')
 ser = serial.Serial(port, baud)
