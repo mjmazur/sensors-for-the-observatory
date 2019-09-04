@@ -27,9 +27,9 @@ while True:
 	line = line.decode('utf-8')
 	values = np.fromstring(line, sep=' ')
 	nline[0] = time()
-	nline[1] = strftime('%H:%M:%S', gmtime())
-	for i in range(2,8):
-		nline[i] = values[i-2]
+	# nline[1] = strftime('%H:%M:%S', gmtime())
+	# for i in range(2,8):
+	# 	nline[i] = values[i-2]
 
 	print(nline)
 
