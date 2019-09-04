@@ -21,6 +21,7 @@ line = line.decode('utf-8')
 # print('Unix Time     ' + line)
 
 nline = np.empty(8)
+narray = []
 
 while True:
 	line = ser.readline()
@@ -36,7 +37,9 @@ while True:
 	for i in range(2,8):
 		nline[i] = values[i-2]
 
-	print(nline)
+	narray = np.append(narray,nline)
+
+	print(narray)
 
 	# print(str(time()) + ' ' + strftime('%H:%M:%S', gmtime()) + ' ' + line)
 
