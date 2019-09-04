@@ -22,7 +22,8 @@ line = line.decode('utf-8')
 
 while True:
 	line = ser.readline()
+	print line
 	line = line.decode('utf-8')
-	print(str(time()) + ' ' + strftime('%H:%M:%S', gmtime()) + ' ' + line)
+	#print(str(time()) + ' ' + strftime('%H:%M:%S', gmtime()) + ' ' + line)
 	# print(strftime('%H:%M:%S', gmtime()))
 	# f.write(str(time()) + ' ' + line) + ' '
