@@ -10,7 +10,7 @@ write_path = 'output.txt'
 
 thedate = strftime('%Y%m%d', gmtime())
 
-print(os.listdir('/home/emccd/enclosure-logs/' + thedate))
+print(os.listdir('~/enclosure-logs/' + thedate))
 
 f = open(write_path, 'w+')
 ser = serial.Serial(port, baud)
