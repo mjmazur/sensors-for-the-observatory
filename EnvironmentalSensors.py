@@ -21,7 +21,7 @@ line = line.decode('utf-8')
 # print('Unix Time     ' + line)
 
 nline = np.empty(8)
-narray = []
+narray = np.empty(8)
 
 while True:
 	line = ser.readline()
