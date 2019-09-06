@@ -11,7 +11,7 @@ baud = 9600
 
 ser = serial.Serial(port, baud)
 
-line = ser.readline()
+line = ser.readline() # Throw away the first line as it may be incomplete
 # line = line.decode('utf-8')
 
 # print('Unix Time     ' + line)
@@ -53,8 +53,9 @@ while True:
 
 	narray = np.vstack((narray, nline))
 
-	print(narray)
+	# print(narray)
 
+	print(narray.shape[0])
 
 	# print(str(time()) + ' ' + strftime('%H:%M:%S', gmtime()) + ' ' + line)
 
