@@ -65,8 +65,18 @@ while True:
 
 		ax[0].plot(x,narray[1:,2])
 		ax[0].set_ylabel('Fluid Temperature (C)')
+		ax[0].set_ylim([0,50])
 		ax[1].plot(x,narray[1:,3])
+		ax[1].set_ylabel('Shed Temperature (C)')
+		ax[1].set_ylim([0,50])
 		ax[2].plot(x,narray[1:,4])
+		ax[2].set_ylabel('Fcam Temperature (C)')
+		axfh = ax[2].twinx()
+		axfh.plot(x,narray[1:,5])
+		ax[2].set_ylim([0,50])
+		ax[4].plot(x,narray[1:,6])
+		ax[4].set_ylabel('Gcam Temperature (C)')
+		ax[4].set_ylim([0,50])
 
 		plt.tight_layout()
 		plt.savefig('envplot_' + thedate + '.png')
