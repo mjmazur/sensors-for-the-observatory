@@ -64,9 +64,11 @@ while True:
 		fig, ax = plt.subplots(4, figsize=(12,20), sharex=True)
 
 		ax[0].plot(x,narray[1:,2])
+		ax[0].ylabel('Fluid Temperature (C)')
 		ax[1].plot(x,narray[1:,3])
 		ax[2].plot(x,narray[1:,4])
 
+		plt.tight_layout()
 		plt.savefig('envplot_' + thedate + '.png')
 
 	# print(str(time()) + ' ' + strftime('%H:%M:%S', gmtime()) + ' ' + line)
