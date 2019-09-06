@@ -7,24 +7,34 @@ from time import gmtime, strftime, time
 port = '/dev/ttyACM0' # put the correct serial port in here
 baud = 9600
 
-thedate = strftime('%Y%m%d', gmtime())
-# write_path = '/home/emccd/enclosure-logs/' + thedate +'/output.txt'
-write_path = 'output.txt'
-
 # print(os.listdir('/home/emccd/enclosure-logs/' + thedate))
 
-f = open(write_path, 'w+')
 ser = serial.Serial(port, baud)
 
-line = ser.readline()
-line = line.decode('utf-8')
+# line = ser.readline()
+# line = line.decode('utf-8')
 
 # print('Unix Time     ' + line)
 
 nline = np.empty(8)
 narray = np.empty(8)
 
+thedate = strftime('%Y%m%d', gmtime())
+
+# write_path = '/home/emccd/enclosure-logs/' + thedate + '_02.log'
+write_path = './' + thedate + '_02.log'
+
+f = open(write_path, 'w+')
+
 while True:
+
+	if strftime('%Y%m%d', gmtime()) != thedate:
+		thedate = strftime('%Y%m%d', gmtime())
+		# write_path = '/home/emccd/enclosure-logs/' + thedate + '_02.log'
+		write_path = './' + thedate + '_02.log'
+		f.close()
+		f = open(write_path, 'w+')
+
 	line = ser.readline()
 	line = line.decode('utf-8')
 
