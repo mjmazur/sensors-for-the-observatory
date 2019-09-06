@@ -73,9 +73,13 @@ while True:
 		ax[2].set_ylabel('Fcam Temperature (C)')
 		axfh = ax[2].twinx()
 		axfh.plot(x,narray[1:,5])
+		axfh.set_ylabel('Fcam Humidity (%)')
 		ax[2].set_ylim([0,50])
 		ax[3].plot(x,narray[1:,6])
 		ax[3].set_ylabel('Gcam Temperature (C)')
+		axgh = ax[3].twinx()
+		axgh.plot(x,narray[1:,7])
+		axgh.set_ylabel('Gcam Humidity (%)')
 		ax[3].set_ylim([0,50])
 
 		plt.tight_layout()
