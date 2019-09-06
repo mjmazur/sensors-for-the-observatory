@@ -60,7 +60,7 @@ while True:
 		y = narray[1:,2]
 
 		plt.plot(x,y)
-		plt.show()
+		plt.savefig('test.png')
 
 	# print(str(time()) + ' ' + strftime('%H:%M:%S', gmtime()) + ' ' + line)
 
