@@ -56,6 +56,11 @@ while True:
 	# print(narray)
 	if narray.shape[0] % 2 == 0:
 		print(narray[1:,0])
+		x = narray[1:,1]
+		y = narray[1:,2]
+
+		plt.plot(x,y)
+		plt.show()
 
 	# print(str(time()) + ' ' + strftime('%H:%M:%S', gmtime()) + ' ' + line)
 
