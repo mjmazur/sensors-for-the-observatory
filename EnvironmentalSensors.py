@@ -56,7 +56,7 @@ while True:
 	narray = np.vstack((narray, nline))
 
 	# print(narray)
-	if narray.shape[0] % 2 == 0:
+	if narray.shape[0] % 1 == 0:
 		print(narray[1:,0])
 		x = narray[1:,1]
 		y = narray[1:,2]
@@ -64,7 +64,7 @@ while True:
 		fig, ax = plt.subplots(4, figsize=(12,20), sharex=True)
 
 		ax[0].plot(x,narray[1:,2])
-		ax[0].ylabel('Fluid Temperature (C)')
+		ax[0].set_ylabel('Fluid Temperature (C)')
 		ax[1].plot(x,narray[1:,3])
 		ax[2].plot(x,narray[1:,4])
 
