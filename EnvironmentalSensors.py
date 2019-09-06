@@ -11,7 +11,7 @@ baud = 9600
 
 ser = serial.Serial(port, baud)
 
-# line = ser.readline()
+line = ser.readline()
 # line = line.decode('utf-8')
 
 # print('Unix Time     ' + line)
