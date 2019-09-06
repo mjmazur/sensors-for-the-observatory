@@ -61,12 +61,12 @@ while True:
 		x = narray[1:,1]
 		y = narray[1:,2]
 
-		fig, ax = plt.subplots(6)
+		fig, ax = plt.subplots(4, figsize=(12,20), sharex=True)
 
 		ax[0].plot(x,narray[1:,2])
 		ax[1].plot(x,narray[1:,3])
 		ax[2].plot(x,narray[1:,4])
-		
+
 		plt.savefig('envplot_' + thedate + '.png')
 
 	# print(str(time()) + ' ' + strftime('%H:%M:%S', gmtime()) + ' ' + line)
