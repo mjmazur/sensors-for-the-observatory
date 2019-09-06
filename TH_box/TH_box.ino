@@ -125,7 +125,7 @@ void tftPrintTest() {
   Serial.print("\t");
   Serial.print(T3);
   Serial.print("\t");
-  Serial.println(h2);
+  Serial.print(h2);
   
   if (cycleCnt > 0)
     cycleCnt--;
