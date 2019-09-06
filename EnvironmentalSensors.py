@@ -38,8 +38,6 @@ while True:
 	line = ser.readline()
 	line = line.decode('utf-8')
 
-	print(line)
-
 	tnow = np.fromstring(strftime('%H %M %S', gmtime()), sep=' ')
 	secs = tnow[0] + tnow[1]/60.0 + tnow[2]/3600.0
 
@@ -51,12 +49,12 @@ while True:
 	nline[1] = secs
 
 	for i in range(2,8):
-		print(i)
 		nline[i] = values[i-2]
 
 	narray = np.vstack((narray, nline))
 
-	print(narray.shape)
+	print(narray)
+
 
 	# print(str(time()) + ' ' + strftime('%H:%M:%S', gmtime()) + ' ' + line)
 
