@@ -55,7 +55,7 @@ while True:
 
 	# print(narray)
 	if narray.shape[0] % 2 == 0:
-		print(narray[:,2])
+		print(narray[:,0])
 
 	# print(str(time()) + ' ' + strftime('%H:%M:%S', gmtime()) + ' ' + line)
 
