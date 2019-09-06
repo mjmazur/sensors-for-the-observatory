@@ -67,4 +67,4 @@ while True:
 	# print(str(time()) + ' ' + strftime('%H:%M:%S', gmtime()) + ' ' + line)
 
 	# print(strftime('%H:%M:%S', gmtime()))
-	f.write(str(time()) + ' ' + line) + ' '
+	f.write(str(time()) + ' ' + str(secs) + ' ' + str(line))
