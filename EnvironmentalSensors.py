@@ -54,8 +54,8 @@ while True:
 	narray = np.vstack((narray, nline))
 
 	# print(narray)
-	if narray.shape[0] % 5 == 0:
-		print(narray.shape[0])
+	if narray.shape[0] % 2 == 0:
+		print(narray[:,2])
 
 	# print(str(time()) + ' ' + strftime('%H:%M:%S', gmtime()) + ' ' + line)
 
