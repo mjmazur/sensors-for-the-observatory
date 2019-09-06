@@ -74,9 +74,9 @@ while True:
 		axfh = ax[2].twinx()
 		axfh.plot(x,narray[1:,5])
 		ax[2].set_ylim([0,50])
-		ax[4].plot(x,narray[1:,6])
-		ax[4].set_ylabel('Gcam Temperature (C)')
-		ax[4].set_ylim([0,50])
+		ax[3].plot(x,narray[1:,6])
+		ax[3].set_ylabel('Gcam Temperature (C)')
+		ax[3].set_ylim([0,50])
 
 		plt.tight_layout()
 		plt.savefig('envplot_' + thedate + '.png')
