@@ -8,7 +8,8 @@ port = '/dev/ttyACM0' # put the correct serial port in here
 baud = 9600
 
 thedate = strftime('%Y%m%d', gmtime())
-write_path = '/home/emccd/enclosure-logs/' + thedate +'/output.txt'
+# write_path = '/home/emccd/enclosure-logs/' + thedate +'/output.txt'
+write_path = 'output.txt'
 
 # print(os.listdir('/home/emccd/enclosure-logs/' + thedate))
 
