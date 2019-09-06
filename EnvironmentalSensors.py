@@ -84,6 +84,7 @@ while True:
 
 		plt.tight_layout()
 		plt.savefig('envplot_' + thedate + '.png')
+		plt.close()
 
 	# print(str(time()) + ' ' + strftime('%H:%M:%S', gmtime()) + ' ' + line)
 
