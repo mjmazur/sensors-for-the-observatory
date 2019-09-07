@@ -67,6 +67,8 @@ while True:
 		y = narray[1:,2]
 
 		fig, ax = plt.subplots(3, figsize=(12,20), sharex=True)
+		
+		plt.suptitle('Elginfield EMCCD Conditions', size=25)
 
 		ax[0].plot(x,narray[1:,2], color='green', label='Fluid T')
 		ax[0].set_title('Fluid & Shed Temperatures', size=20)
@@ -96,12 +98,12 @@ while True:
 		axgh.set_ylabel('Gcam Humidity (%)', size=15)
 		axgh.set_ylim([0,100])
 		
-		ax[0].legend(loc='lower left')
-		ax[1].legend(loc='lower left')
-		ax[2].legend(loc='lower left')
-		axst.legend(loc='lower right')
-		axfh.legend(loc='lower right')
-		axgh.legend(loc='lower right')
+		ax[0].legend(loc='lower left', frameon=False)
+		ax[1].legend(loc='lower left', frameon=False)
+		ax[2].legend(loc='lower left', frameon=False)
+		axst.legend(loc='lower right', frameon=False)
+		axfh.legend(loc='lower right', frameon=False)
+		axgh.legend(loc='lower right', frameon=False)
 
 		plt.tight_layout()
 		plt.savefig('envplot_' + thedate + '.png')
