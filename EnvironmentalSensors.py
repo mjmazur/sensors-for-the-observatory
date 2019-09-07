@@ -96,9 +96,12 @@ while True:
 		axgh.set_ylabel('Gcam Humidity (%)', size=15)
 		axgh.set_ylim([0,100])
 		
-		ax[0].legend()
-		ax[1].legend()
-		ax[2].legend()
+		ax[0].legend(loc='lower left')
+		ax[1].legend(loc='lower left')
+		ax[2].legend(loc='lower left')
+		axst.legend(loc='lower right')
+		axfh.legend(loc='lower right')
+		axgh.legend(loc='lower right')
 
 		plt.tight_layout()
 		plt.savefig('envplot_' + thedate + '.png')
