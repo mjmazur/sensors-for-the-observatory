@@ -74,7 +74,7 @@ while True:
 		ax[0].set_title('Fluid & Shed Temperatures', size=20)
 		ax[0].set_ylabel('Fluid Temperature (C)', size=15)
 		ax[0].set_xlabel('UTC (h)', size=15)
-		ax[0].set_ylim([0,40])
+		ax[0].set_ylim([np.amin(narray[1:,2])-5,np.amax(narray[1:,2])])
 		axst = ax[0].twinx()
 		axst.plot(x,narray[1:,3], color='red', label='Shed T')
 		axst.set_ylabel('Shed Temperature (C)', size=15)
