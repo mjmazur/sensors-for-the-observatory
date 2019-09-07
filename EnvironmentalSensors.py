@@ -20,7 +20,7 @@ line = ser.readline() # Throw away the first line as it may be incomplete
 
 nline = np.empty(8)
 narray = np.empty(8)
-secsold = 0.0
+hoursold = 0.0
 
 thedate = strftime('%Y%m%d', gmtime())
 
@@ -42,23 +42,23 @@ while True:
 	line = line.decode('utf-8')
 
 	tnow = np.fromstring(strftime('%H %M %S', gmtime()), sep=' ')
-	secs = tnow[0] + tnow[1]/60.0 + tnow[2]/3600.0
+	hours = tnow[0] + tnow[1]/60.0 + tnow[2]/3600.0
 
 	values = np.fromstring(line, sep=' ')
 
 	# print(values[0])
 
 	nline[0] = time()
-	nline[1] = secs
+	nline[1] = hours
 
 	for i in range(2,8):
 		nline[i] = values[i-2]
 
-	if secs > secsold:
+	if hours > hoursold:
 		narray = np.vstack((narray, nline))
-		f.write(str(time()) + ' ' + str(secs) + ' ' + str(line))
+		f.write(str(time()) + ' ' + str(hours) + ' ' + str(line))
 
-	secsold = secs
+	hoursold = hours
 
 	# print(narray)
 	if narray.shape[0] % 5 == 0:
@@ -70,6 +70,7 @@ while True:
 
 		ax[0].plot(x,narray[1:,2], color='blue')
 		ax[0].set_ylabel('Fluid Temperature (C)')
+		ax[0].set_xlabel('UTC (h)')
 		ax[0].set_ylim([0,50])
 		ax[1].plot(x,narray[1:,3], color='blue')
 		ax[1].set_ylabel('Shed Temperature (C)')
@@ -83,6 +84,7 @@ while True:
 		axfh.set_ylim([0,100])
 		ax[3].plot(x,narray[1:,6], color='blue')
 		ax[3].set_ylabel('Gcam Temperature (C)')
+		ax[3].set_xlabel('UTC (h)')
 		ax[3].set_ylim([0,50])
 		axgh = ax[3].twinx()
 		axgh.plot(x,narray[1:,7], color='orange')
@@ -96,5 +98,5 @@ while True:
 	# print(str(time()) + ' ' + strftime('%H:%M:%S', gmtime()) + ' ' + line)
 
 	# print(strftime('%H:%M:%S', gmtime()))
-	print(time())
-	print(secs)
+	# print(time())
+	# print(hours)
