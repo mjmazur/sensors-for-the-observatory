@@ -69,6 +69,7 @@ while True:
 		fig, ax = plt.subplots(3, figsize=(12,20), sharex=True)
 
 		ax[0].plot(x,narray[1:,2], color='green')
+		ax[0].set_title('Fluid & Shed Temperatures')
 		ax[0].set_ylabel('Fluid Temperature (C)')
 		ax[0].set_xlabel('UTC (h)')
 		ax[0].set_ylim([0,50])
@@ -77,6 +78,7 @@ while True:
 		axst.set_ylabel('Shed Temperature (C)')
 		axst.set_ylim([0,50])
 		ax[1].plot(x,narray[1:,4], color='blue')
+		ax[1].set_title('F Camera Temperature & Humidity')
 		ax[1].set_ylabel('Fcam Temperature (C)')
 		ax[1].set_xlabel('UTC (h)')
 		ax[1].set_ylim([0,50])
@@ -85,6 +87,7 @@ while True:
 		axfh.set_ylabel('Fcam Humidity (%)')
 		axfh.set_ylim([0,100])
 		ax[2].plot(x,narray[1:,6], color='blue')
+		ax[2].set_title('G Camera Temperature & Humidity')
 		ax[2].set_ylabel('Gcam Temperature (C)')
 		ax[2].set_xlabel('UTC (h)')
 		ax[2].set_ylim([0,50])
