@@ -68,7 +68,7 @@ while True:
 
 		fig, ax = plt.subplots(3, figsize=(12,20), sharex=True)
 		
-		plt.suptitle('Elginfield EMCCD Conditions', size=25)
+		# plt.suptitle('Elginfield EMCCD Conditions', size=25)
 
 		ax[0].plot(x,narray[1:,2], color='green', label='Fluid T')
 		ax[0].set_title('Fluid & Shed Temperatures', size=20)
