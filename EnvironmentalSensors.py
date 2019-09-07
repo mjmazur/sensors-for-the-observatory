@@ -20,6 +20,7 @@ line = ser.readline() # Throw away the first line as it may be incomplete
 
 nline = np.empty(8)
 narray = np.empty(8)
+secsold = 0.0
 
 thedate = strftime('%Y%m%d', gmtime())
 
@@ -53,11 +54,15 @@ while True:
 	for i in range(2,8):
 		nline[i] = values[i-2]
 
-	narray = np.vstack((narray, nline))
+	if secs > secsold:
+		narray = np.vstack((narray, nline))
+		f.write(str(time()) + ' ' + str(secs) + ' ' + str(line))
+
+	secsold = secs
 
 	# print(narray)
 	if narray.shape[0] % 1 == 0:
-		print(narray[1:,0])
+		# print(narray[1:,0])
 		x = narray[1:,1]
 		y = narray[1:,2]
 
@@ -71,17 +76,20 @@ while True:
 		ax[1].set_ylim([0,50])
 		ax[2].plot(x,narray[1:,4])
 		ax[2].set_ylabel('Fcam Temperature (C)')
+		ax[2].set_ylim([0,50])
 		axfh = ax[2].twinx()
 		axfh.plot(x,narray[1:,5])
 		axfh.set_ylabel('Fcam Humidity (%)')
-		ax[2].set_ylim([0,50])
+		axfh.set_ylim([0,100])
+		
 		ax[3].plot(x,narray[1:,6])
 		ax[3].set_ylabel('Gcam Temperature (C)')
+		ax[3].set_ylim([0,50])
 		axgh = ax[3].twinx()
 		axgh.plot(x,narray[1:,7])
 		axgh.set_ylabel('Gcam Humidity (%)')
-		ax[3].set_ylim([0,50])
-
+		axgh.set_ylim([0,100])
+		
 		plt.tight_layout()
 		plt.savefig('envplot_' + thedate + '.png')
 		plt.close()
@@ -91,4 +99,3 @@ while True:
 	# print(strftime('%H:%M:%S', gmtime()))
 	print(time())
 	print(secs)
-	f.write(str(time()) + ' ' + str(secs) + ' ' + str(line))
