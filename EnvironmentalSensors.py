@@ -14,9 +14,6 @@ baud = 9600
 ser = serial.Serial(port, baud)
 
 line = ser.readline() # Throw away the first line as it may be incomplete
-# line = line.decode('utf-8')
-
-# print('Unix Time     ' + line)
 
 nline = np.empty(8)
 narray = np.empty(8)
@@ -35,6 +32,7 @@ while True:
 		thedate = strftime('%Y%m%d', gmtime())
 		# write_path = '/home/emccd/enclosure-logs/' + thedate + '_02.log'
 		write_path = './' + thedate + '_02.log'
+		narray = np.delete(narray, np.s_[1:], axis=0)
 		f.close()
 		f = open(write_path, 'w+')
 
