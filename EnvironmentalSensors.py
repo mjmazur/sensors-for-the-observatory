@@ -62,7 +62,7 @@ while True:
 	if hours > hoursold:
 		narray = np.vstack((narray, nline))
 		# f.write(str(time()) + ' ' + str(hours) + ' ' + str(line))
-		np.savetxt(write_path, narray, fmt='%10f %2.6f %2.2f %2.2f %2.2f %2.2f %2.2f %2.2f')
+		np.savetxt(write_path, narray, fmt='%.2f')
 		#f.write(str(nline))
 		print(str(nline))
 		print('wrote line')
