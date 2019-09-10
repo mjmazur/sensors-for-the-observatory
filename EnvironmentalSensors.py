@@ -24,8 +24,8 @@ ser = serial.Serial(port, baud)
 
 line = ser.readline() # Throw away the first line as it may be incomplete
 
-nline = np.empty(8)
-narray = np.empty(8)
+nline = np.zeros(8)
+narray = np.zeros(8)
 hoursold = 0.0
 
 thedate = strftime('%Y%m%d', gmtime())
