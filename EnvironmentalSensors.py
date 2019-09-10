@@ -34,7 +34,7 @@ thedate = strftime('%Y%m%d', gmtime())
 # write_path = '/home/emccd/enclosure-logs/' + thedate + '_02.log'
 write_path = './' + thedate + '_02.log'
 
-f = open(write_path, 'w+')
+# f = open(write_path, 'w+')
 
 while True:
 
@@ -43,8 +43,8 @@ while True:
 		# write_path = '/home/emccd/enclosure-logs/' + thedate + '_02.log'
 		write_path = './' + thedate + '_02.log'
 		narray = np.delete(narray, np.s_[1:], axis=0)
-		f.close()
-		f = open(write_path, 'w+')
+		#f.close()
+		# f = open(write_path, 'w+')
 
 	line, values = getvalues()
 
@@ -93,7 +93,7 @@ while True:
 		ax[0].yaxis.set_major_locator(MultipleLocator(1))
 		ax[0].yaxis.set_major_formatter(FormatStrFormatter('%d'))
 		ax[0].yaxis.set_minor_locator(MultipleLocator(0.5))
-		
+
 		axst = ax[0].twinx()
 		axst.plot(x,narray[1:,3], color='red', label='Shed Temperature')
 		axst.set_ylabel('Shed Temperature (C)', size=15)
