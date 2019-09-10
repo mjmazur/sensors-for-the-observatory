@@ -29,13 +29,13 @@ hoursold = 0.0
 
 thedate = strftime('%Y%m%d', gmtime())
 
-write_path = '/home/emccd/enclosure-logs/' + thedate + '_02.log'
+write_path = '/home/emccd/enclosure-logs/' + thedate + '/' + thedate '_02.log'
 
 while True:
 
 	if strftime('%Y%m%d', gmtime()) != thedate:
 		thedate = strftime('%Y%m%d', gmtime())
-		write_path = '/home/emccd/enclosure-logs/' + thedate + '_02.log'
+		write_path = '/home/emccd/enclosure-logs/' + thedate + '/' + thedate '_02.log'
 		narray = np.delete(narray, np.s_[1:], axis=0)
 
 	line, values = getvalues()
@@ -136,5 +136,5 @@ while True:
 		axgh.legend(loc='lower right', frameon=False)
 
 		plt.tight_layout()
-		plt.savefig('envplot_' + thedate + '.png', dpi=300)
+		plt.savefig('/home/emccd/enclosure-logs/' + thedate + '/' + 'envplot_' + thedate + '.png', dpi=300)
 		plt.close()
