@@ -75,7 +75,7 @@ while True:
 		x = narray[1:,1]
 		y = narray[1:,2]
 
-		fig, ax = plt.subplots(3, figsize=(12,20), sharex=True)
+		fig, ax = plt.subplots(3, figsize=(12,20))
 		
 		# plt.suptitle('Elginfield EMCCD Conditions', size=25)
 
