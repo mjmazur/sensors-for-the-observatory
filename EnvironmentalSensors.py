@@ -89,7 +89,7 @@ while True:
 		ax[0].xaxis.set_tick_params(labelbottom=True)
 		ax[0].xaxis.set_major_locator(MultipleLocator(1))
 		ax[0].xaxis.set_major_formatter(FormatStrFormatter('%d'))
-		ax[0].xaxis.set_minor_locator(MultipleLocator(0.5))
+		ax[0].xaxis.set_minor_locator(MultipleLocator(0.25))
 		axst = ax[0].twinx()
 		axst.plot(x,narray[1:,3], color='red', label='Shed Temperature')
 		axst.set_ylabel('Shed Temperature (C)', size=15)
