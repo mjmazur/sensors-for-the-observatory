@@ -6,6 +6,15 @@ import numpy as np
 import os
 from time import gmtime, strftime, time
 
+def getvalues():
+
+	line = ser.readline()
+	line = line.decode('utf-8')
+
+	values = np.fromstring(line, sep=' ')
+
+	return values
+
 port = '/dev/ttyACM0' # put the correct serial port in here
 baud = 9600
 
@@ -36,15 +45,13 @@ while True:
 		f.close()
 		f = open(write_path, 'w+')
 
-	line = ser.readline()
-	line = line.decode('utf-8')
+	values = getvalues()
+
+	if values[0] == 99.0 or values[1] == 99.0 or values[2] == 99.0 or values[4] == 99.0:
+		values = getvalues()
 
 	tnow = np.fromstring(strftime('%H %M %S', gmtime()), sep=' ')
 	hours = tnow[0] + tnow[1]/60.0 + tnow[2]/3600.0
-
-	values = np.fromstring(line, sep=' ')
-
-	# print(values[0])
 
 	nline[0] = time()
 	nline[1] = hours
@@ -74,6 +81,7 @@ while True:
 		ax[0].set_xlabel('UTC (h)', size=15)
 		ax[0].set_ylim([np.amin(narray[1:,2])-5,np.amax(narray[1:,2])+5])
 		ax[0].set_xlim([0,24])
+		ax[0].set_xticklabels()
 		axst = ax[0].twinx()
 		axst.plot(x,narray[1:,3], color='red', label='Shed Temperature')
 		axst.set_ylabel('Shed Temperature (C)', size=15)
@@ -84,6 +92,7 @@ while True:
 		ax[1].set_xlabel('UTC (h)', size=15)
 		ax[1].set_ylim([np.amin(narray[1:,4])-5,np.amax(narray[1:,4])+5])
 		ax[1].set_xlim([0,24])
+		ax[1].set_xticklabels()
 		axfh = ax[1].twinx()
 		axfh.plot(x,narray[1:,5], color='orange', label='F-Camera Humidity')
 		axfh.set_ylabel('Fcam Humidity (%)', size=15)
@@ -94,6 +103,7 @@ while True:
 		ax[2].set_xlabel('UTC (h)')
 		ax[2].set_ylim([np.amin(narray[1:,6])-5,np.amax(narray[1:,6])+5])
 		ax[2].set_xlim([0,24])
+		ax[2].set_xticklabels()
 		axgh = ax[2].twinx()
 		axgh.plot(x,narray[1:,7], color='orange', label='G-Camera Humidity')
 		axgh.set_ylabel('Gcam Humidity (%)', size=15)
