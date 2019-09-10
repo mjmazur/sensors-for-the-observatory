@@ -100,6 +100,9 @@ while True:
 		ax[1].set_xlabel('UTC (h)', size=15)
 		ax[1].set_ylim([np.amin(narray[1:,4])-5,np.amax(narray[1:,4])+5])
 		ax[1].set_xlim([0,24])
+		ax[1].xaxis.set_major_locator(MultipleLocator(1))
+		ax[1].xaxis.set_major_formatter(FormatStrFormatter('%d'))
+		ax[1].xaxis.set_minor_locator(MultipleLocator(0.25))
 		#ax[1].set_xticklabels()
 		axfh = ax[1].twinx()
 		axfh.plot(x,narray[1:,5], color='orange', label='F-Camera Humidity')
@@ -111,6 +114,9 @@ while True:
 		ax[2].set_xlabel('UTC (h)')
 		ax[2].set_ylim([np.amin(narray[1:,6])-5,np.amax(narray[1:,6])+5])
 		ax[2].set_xlim([0,24])
+		ax[2].xaxis.set_major_locator(MultipleLocator(1))
+		ax[2].xaxis.set_major_formatter(FormatStrFormatter('%d'))
+		ax[2].xaxis.set_minor_locator(MultipleLocator(0.25))
 		#ax[2].set_xticklabels()
 		axgh = ax[2].twinx()
 		axgh.plot(x,narray[1:,7], color='orange', label='G-Camera Humidity')
@@ -125,7 +131,7 @@ while True:
 		axgh.legend(loc='lower right', frameon=False)
 
 		plt.tight_layout()
-		plt.savefig('envplot_' + thedate + '.png')
+		plt.savefig('envplot_' + thedate + '.png', dpi=300)
 		plt.close()
 
 	# print(str(time()) + ' ' + strftime('%H:%M:%S', gmtime()) + ' ' + line)
