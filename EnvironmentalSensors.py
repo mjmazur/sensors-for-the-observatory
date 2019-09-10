@@ -63,7 +63,9 @@ while True:
 
 	if hours > hoursold:
 		narray = np.vstack((narray, nline))
-		f.write(str(time()) + ' ' + str(hours) + ' ' + str(line))
+		# f.write(str(time()) + ' ' + str(hours) + ' ' + str(line))
+		f.write(nline)
+		print('wrote line')
 
 	hoursold = hours
 
