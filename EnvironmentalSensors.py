@@ -46,7 +46,7 @@ while True:
 		f = open(write_path, 'w+')
 
 	values = getvalues()
-
+	print(values)
 	if values[0] == 99.0 or values[1] == 99.0 or values[2] == 99.0 or values[4] == 99.0:
 		values = getvalues()
 
