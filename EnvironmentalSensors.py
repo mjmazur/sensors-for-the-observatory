@@ -47,8 +47,6 @@ while True:
 
 	line, values = getvalues()
 
-	print(values)
-
 	if values[0] == 99.0 or values[1] == 99.0 or values[2] == 99.0 or values[4] == 99.0:
 		line, values = getvalues()
 
@@ -65,6 +63,7 @@ while True:
 		narray = np.vstack((narray, nline))
 		# f.write(str(time()) + ' ' + str(hours) + ' ' + str(line))
 		f.write(str(nline))
+		print(str(nline))
 		print('wrote line')
 
 	hoursold = hours
