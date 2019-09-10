@@ -13,7 +13,7 @@ def getvalues():
 
 	values = np.fromstring(line, sep=' ')
 
-	return values
+	return line, values
 
 port = '/dev/ttyACM0' # put the correct serial port in here
 baud = 9600
@@ -45,13 +45,12 @@ while True:
 		f.close()
 		f = open(write_path, 'w+')
 
-	values = getvalues()
+	line, values = getvalues()
 
 	print(values)
 
 	if values[0] == 99.0 or values[1] == 99.0 or values[2] == 99.0 or values[4] == 99.0:
-		values = getvalues()
-		print('fuck')
+		line, values = getvalues()
 
 	tnow = np.fromstring(strftime('%H %M %S', gmtime()), sep=' ')
 	hours = tnow[0] + tnow[1]/60.0 + tnow[2]/3600.0
@@ -65,7 +64,6 @@ while True:
 	if hours > hoursold:
 		narray = np.vstack((narray, nline))
 		f.write(str(time()) + ' ' + str(hours) + ' ' + str(line))
-		print('saved line')
 
 	hoursold = hours
 
