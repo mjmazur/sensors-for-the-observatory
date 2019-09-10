@@ -19,8 +19,6 @@ def getvalues():
 port = '/dev/ttyACM0' # put the correct serial port in here
 baud = 9600
 
-# print(os.listdir('/home/emccd/enclosure-logs/' + thedate))
-
 ser = serial.Serial(port, baud)
 
 line = ser.readline() # Throw away the first line as it may be incomplete
@@ -31,20 +29,14 @@ hoursold = 0.0
 
 thedate = strftime('%Y%m%d', gmtime())
 
-# write_path = '/home/emccd/enclosure-logs/' + thedate + '_02.log'
-write_path = './' + thedate + '_02.log'
-
-# f = open(write_path, 'w+')
+write_path = '/home/emccd/enclosure-logs/' + thedate + '_02.log'
 
 while True:
 
 	if strftime('%Y%m%d', gmtime()) != thedate:
 		thedate = strftime('%Y%m%d', gmtime())
-		# write_path = '/home/emccd/enclosure-logs/' + thedate + '_02.log'
-		write_path = './' + thedate + '_02.log'
+		write_path = '/home/emccd/enclosure-logs/' + thedate + '_02.log'
 		narray = np.delete(narray, np.s_[1:], axis=0)
-		#f.close()
-		# f = open(write_path, 'w+')
 
 	line, values = getvalues()
 
@@ -62,23 +54,15 @@ while True:
 
 	if hours > hoursold:
 		narray = np.vstack((narray, nline))
-		# f.write(str(time()) + ' ' + str(hours) + ' ' + str(line))
 		np.savetxt(write_path, narray, fmt='%d %.5f %.2f %.2f %.2f %.2f %.2f %.2f', header='Unix Time - Secs from 00 - Tfluid - Tshed - TF - HF - TG - HG')
-		#f.write(str(nline))
-		print(str(nline))
-		print('wrote line')
 
 	hoursold = hours
 
-	# print(narray)
 	if narray.shape[0] % 5 == 0:
-		# print(narray[1:,0])
 		x = narray[1:,1]
 		y = narray[1:,2]
 
 		fig, ax = plt.subplots(3, figsize=(12,20))
-		
-		# plt.suptitle('Elginfield EMCCD Conditions', size=25)
 
 		ax[0].plot(x,narray[1:,2], color='green', label='Fluid Temperature')
 		ax[0].set_title('Fluid & Shed Temperatures', size=20)
@@ -154,9 +138,3 @@ while True:
 		plt.tight_layout()
 		plt.savefig('envplot_' + thedate + '.png', dpi=300)
 		plt.close()
-
-	# print(str(time()) + ' ' + strftime('%H:%M:%S', gmtime()) + ' ' + line)
-
-	# print(strftime('%H:%M:%S', gmtime()))
-	# print(time())
-	# print(hours)
