@@ -23,13 +23,18 @@ ser = serial.Serial(port, baud)
 
 line = ser.readline() # Throw away the first line as it may be incomplete
 
+write_path = '/home/emccd/enclosure-logs/' + thedate + '/' + thedate + '_02.log'
+
+if os.path.isfile(write_path) == True:
+	narray = np.loadtxt(write_path, skiprows=1)
+else:
+	narray = np.full(8,-999.0)
+
 nline = np.zeros(8)
-narray = np.zeros(8)
+# narray = np.zeros(8)
 hoursold = 0.0
 
 thedate = strftime('%Y%m%d', gmtime())
-
-write_path = '/home/emccd/enclosure-logs/' + thedate + '/' + thedate + '_02.log'
 
 while True:
 
@@ -54,7 +59,7 @@ while True:
 
 	if hours > hoursold:
 		narray = np.vstack((narray, nline))
-		np.savetxt(write_path, narray, fmt='%d %.5f %.2f %.2f %.2f %.2f %.2f %.2f', header='Unix Time - Secs from 00 - Tfluid - Tshed - TF - HF - TG - HG')
+		np.savetxt(write_path, narray[1:,:], fmt='%d %.5f %.2f %.2f %.2f %.2f %.2f %.2f', header='Unix Time - Hours from 00 - Tfluid - Tshed - TF - HF - TG - HG')
 
 	hoursold = hours
 
