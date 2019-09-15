@@ -51,6 +51,8 @@ while True:
 
 	values = getvalues()
 
+	print len(values)
+
 	# Sometimes we see a spike in the one-wire temperature probe. Catch it and re-read if it happens
 	if values[0] == 99.0 or values[1] == 99.0 or values[2] == 99.0 or values[4] == 99.0:
 		values = getvalues()
