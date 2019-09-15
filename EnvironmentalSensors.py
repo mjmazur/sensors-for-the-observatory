@@ -23,7 +23,10 @@ ser = serial.Serial(port, baud)
 
 line = ser.readline() # Throw away the first line as it may be incomplete
 
-write_path = '/home/emccd/enclosure-logs/' + thedate + '/' + thedate + '_02.log'
+write_file = thedate + '_02.log'
+
+write_path = '/home/emccd/enclosure-logs/' + thedate + '/'
+write_path = './'
 
 if os.path.isfile(write_path) == True:
 	narray = np.loadtxt(write_path, skiprows=1)
@@ -40,7 +43,7 @@ while True:
 
 	if strftime('%Y%m%d', gmtime()) != thedate:
 		thedate = strftime('%Y%m%d', gmtime())
-		write_path = '/home/emccd/enclosure-logs/' + thedate + '/' + thedate + '_02.log'
+		write_path = '/home/emccd/enclosure-logs/' + thedate + '/'
 		narray = np.delete(narray, np.s_[1:], axis=0)
 
 	line, values = getvalues()
@@ -59,7 +62,7 @@ while True:
 
 	if hours > hoursold:
 		narray = np.vstack((narray, nline))
-		np.savetxt(write_path, narray[1:,:], fmt='%d %.5f %.2f %.2f %.2f %.2f %.2f %.2f', header='Unix Time - Hours from 00 - Tfluid - Tshed - TF - HF - TG - HG')
+		np.savetxt(write_path + write_file, narray[1:,:], fmt='%d %.5f %.2f %.2f %.2f %.2f %.2f %.2f', header='Unix Time - Hours from 00 - Tfluid - Tshed - TF - HF - TG - HG')
 
 	hoursold = hours
 
@@ -141,5 +144,5 @@ while True:
 		axgh.legend(loc='lower right', frameon=False)
 
 		plt.tight_layout()
-		plt.savefig('/home/emccd/enclosure-logs/' + thedate + '/' + 'envplot_' + thedate + '.png', dpi=300)
+		plt.savefig(write_path + 'envplot_' + thedate + '.png', dpi=300)
 		plt.close()
