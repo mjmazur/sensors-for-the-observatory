@@ -25,10 +25,10 @@ ser = serial.Serial(port, baud)
 
 line = ser.readline() # Throw away the first line as it may be incomplete
 
-write_file = thedate + '_02.log'
+write_file = 'env_' + thedate + '_02.log'
 
 write_path = '/home/emccd/enclosure-logs/' + thedate + '/'
-write_path = './'
+# write_path = './'
 
 if os.path.isfile(write_path + write_file) == True:
 	narray = np.loadtxt(write_path + write_file, skiprows=1)
@@ -66,7 +66,7 @@ while True:
 
 	hoursold = hours
 
-	if narray.shape[0] % 5 == 0:
+	if narray.shape[0] % 20 == 0:
 		x = narray[1:,1]
 		y = narray[1:,2]
 
@@ -144,5 +144,6 @@ while True:
 		axgh.legend(loc='lower right', frameon=False)
 
 		plt.tight_layout()
-		plt.savefig(write_path + 'envplot_' + thedate + '.png', dpi=300)
+		plt.savefig(write_path + 'env_' + thedate + '_02.png', dpi=300)
+		plt.savefig(write_path + '../current/environment_02.png', dpi=300)
 		plt.close()
