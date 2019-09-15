@@ -30,7 +30,7 @@ write_file = thedate + '_02.log'
 write_path = '/home/emccd/enclosure-logs/' + thedate + '/'
 write_path = './'
 
-if os.path.isfile(write_path) == True:
+if os.path.isfile(write_path + write_file) == True:
 	narray = np.loadtxt(write_path, skiprows=1)
 else:
 	narray = np.full(8,-999.0)
