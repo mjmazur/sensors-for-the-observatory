@@ -14,7 +14,7 @@ def getvalues():
 
 	values = np.fromstring(line, sep=' ')
 
-	return line, values
+	return values
 
 thedate = strftime('%Y%m%d', gmtime())
 
@@ -23,48 +23,59 @@ baud = 9600
 
 ser = serial.Serial(port, baud)
 
-line = ser.readline() # Throw away the first line as it may be incomplete
+#line = ser.readline() # Throw away the first line as it may be incomplete
+getvalues() # Throw away the first line as it may be incomplete
 
 write_file = 'env_' + thedate + '_02.log'
 
 write_path = '/home/emccd/enclosure-logs/' + thedate + '/'
 # write_path = './'
 
+# If the log file exists, open it and append new data to it.
+# Otherwise, create a new array for values.
 if os.path.isfile(write_path + write_file) == True:
 	narray = np.loadtxt(write_path + write_file, skiprows=1)
 else:
 	narray = np.full(8,-999.0)
 
 nline = np.zeros(8)
-# narray = np.zeros(8)
+
 hoursold = 0.0
 
 while True:
-
+	# If the date has rolled over to a new day, start a new log and plot
 	if strftime('%Y%m%d', gmtime()) != thedate:
 		thedate = strftime('%Y%m%d', gmtime())
 		write_path = '/home/emccd/enclosure-logs/' + thedate + '/'
 		narray = np.delete(narray, np.s_[1:], axis=0)
 
-	line, values = getvalues()
+	values = getvalues()
 
+	# Sometimes we see a spike in the one-wire temperature probe. Catch it and re-read if it happens
 	if values[0] == 99.0 or values[1] == 99.0 or values[2] == 99.0 or values[4] == 99.0:
-		line, values = getvalues()
+		values = getvalues()
 
-	tnow = np.fromstring(strftime('%H %M %S', gmtime()), sep=' ')
-	hours = tnow[0] + tnow[1]/60.0 + tnow[2]/3600.0
+	tnow = np.fromstring(strftime('%H %M %S', gmtime()), sep=' ') # Get current UTC
+	hours = tnow[0] + tnow[1]/60.0 + tnow[2]/3600.0 # Number of hours from 00 UTC
 
+	# Set the first two array elements to unix time and fractional UTC hours respectively
 	nline[0] = time()
 	nline[1] = hours
 
+	# Fill the rest of the line with the values retrieved from the sensors
 	for i in range(2,8):
 		nline[i] = values[i-2]
 
-	if hours > hoursold:
+	if hours > hoursold: # Fixes an issue when not using GMT. Can probably be removed.
 		narray = np.vstack((narray, nline))
 		np.savetxt(write_path + write_file, narray[1:,:], fmt='%d %.5f %.2f %.2f %.2f %.2f %.2f %.2f', header='Unix Time - Hours from 00 - Tfluid - Tshed - TF - HF - TG - HG')
 
 	hoursold = hours
+
+	### Plotting section ###
+
+	# Check size of the array and make a plot if divisible by modulo argument
+	# This allows for the plot to be updated at a different rate than the saved file
 
 	if narray.shape[0] % 1 == 0:
 		x = narray[1:,1]
