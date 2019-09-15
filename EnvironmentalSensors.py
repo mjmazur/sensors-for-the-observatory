@@ -147,3 +147,5 @@ while True:
 		plt.savefig(write_path + 'env_' + thedate + '_02.png', dpi=300)
 		plt.savefig(write_path + '../current/environment_02.png', dpi=300)
 		plt.close()
+
+		time.sleep(30)
