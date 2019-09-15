@@ -4,7 +4,7 @@ matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 import numpy as np
 import os
-from time import gmtime, strftime, time
+from time import gmtime, strftime, time, sleep
 from matplotlib.ticker import (MultipleLocator, FormatStrFormatter)
 
 def getvalues():
