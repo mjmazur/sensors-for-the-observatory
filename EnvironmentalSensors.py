@@ -66,7 +66,7 @@ while True:
 
 	hoursold = hours
 
-	if narray.shape[0] % 20 == 0:
+	if narray.shape[0] % 100 == 0:
 		x = narray[1:,1]
 		y = narray[1:,2]
 
