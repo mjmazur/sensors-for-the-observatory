@@ -16,6 +16,8 @@ def getvalues():
 
 	return line, values
 
+thedate = strftime('%Y%m%d', gmtime())
+
 port = '/dev/ttyACM0' # put the correct serial port in here
 baud = 9600
 
@@ -36,8 +38,6 @@ else:
 nline = np.zeros(8)
 # narray = np.zeros(8)
 hoursold = 0.0
-
-thedate = strftime('%Y%m%d', gmtime())
 
 while True:
 
