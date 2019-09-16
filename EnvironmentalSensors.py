@@ -50,7 +50,7 @@ while True:
 		narray = np.delete(narray, np.s_[1:], axis=0)
 
 	values = getvalues()
-	print len(values)
+	print(len(values))
 
 	# If the list of values is incomplete (less than 6 elements), read again
 	while len(values) < 6:
