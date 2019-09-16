@@ -165,4 +165,4 @@ while True:
 		plt.savefig(write_path + '../current/environment_02.png', dpi=300)
 		plt.close()
 
-	sleep(120)
+	# sleep(120)
