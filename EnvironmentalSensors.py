@@ -50,14 +50,16 @@ while True:
 		narray = np.delete(narray, np.s_[1:], axis=0)
 
 	values = getvalues()
+	print len(values)
 
 	# If the list of values is incomplete (less than 6 elements), read again
 	while len(values) < 6:
-		values = getvalues
+		values = getvalues()
 
 	# Sometimes we see a spike in the one-wire temperature probe. Catch it and re-read if it happens
 	if values[0] == 99.0 or values[1] == 99.0 or values[2] == 99.0 or values[4] == 99.0:
-		values = getvalues()
+		while len(values) < 6:
+			values = getvalues()
 
 	tnow = np.fromstring(strftime('%H %M %S', gmtime()), sep=' ') # Get current UTC
 	hours = tnow[0] + tnow[1]/60.0 + tnow[2]/3600.0 # Number of hours from 00 UTC
