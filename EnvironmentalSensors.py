@@ -53,7 +53,7 @@ while True:
 	print(len(values))
 
 	# If the list of values is incomplete (less than 6 elements), read again
-	while len(values) < 6:
+	while len(values) != 6:
 		values = getvalues()
 
 	# Sometimes we see a spike in the one-wire temperature probe. Catch it and re-read if it happens
