@@ -50,12 +50,11 @@ while True:
 		narray = np.delete(narray, np.s_[1:], axis=0)
 
 	values = getvalues()
-	print(len(values))
 
 	# If the list of values is incomplete (less than 6 elements), read again
 	while len(values) != 6:
 		values = getvalues()
-		print('re-get values!')
+		# print('re-get values!')
 
 	# Sometimes we see a spike in the one-wire temperature probe. Catch it and re-read if it happens
 	if values[0] == 99.0 or values[1] == 99.0 or values[2] == 99.0 or values[4] == 99.0:
@@ -166,4 +165,4 @@ while True:
 		plt.savefig(write_path + '../current/environment_02.png', dpi=300)
 		plt.close()
 
-	# sleep(120)
+	sleep(120)
