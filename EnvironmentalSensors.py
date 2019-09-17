@@ -83,7 +83,7 @@ while True:
 	# Check size of the array and make a plot if divisible by modulo argument
 	# This allows for the plot to be updated at a different rate than the saved file
 
-	if narray.shape[0] % 1 == 0:
+	if (len(narray) > 2) and (narray.shape[0] % 1 == 0):
 		x = narray[1:,1]
 		y = narray[1:,2]
 
