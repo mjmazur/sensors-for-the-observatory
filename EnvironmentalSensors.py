@@ -26,7 +26,7 @@ ser = serial.Serial(port, baud)
 #line = ser.readline() # Throw away the first line as it may be incomplete
 getvalues() # Throw away the first line as it may be incomplete
 
-write_file = 'env_' + thedate + '_02.log'
+write_file = 'env_' + thedate + '_02'
 
 write_path = '/home/emccd/enclosure-logs/' + thedate + '/'
 # write_path = './'
@@ -47,6 +47,7 @@ while True:
 	if strftime('%Y%m%d', gmtime()) != thedate:
 		thedate = strftime('%Y%m%d', gmtime())
 		write_path = '/home/emccd/enclosure-logs/' + thedate + '/'
+		write_file = 'env_' + thedate + '_02'
 		narray = np.delete(narray, np.s_[1:], axis=0)
 
 	values = getvalues()
@@ -74,7 +75,7 @@ while True:
 
 	if hours > hoursold: # Fixes an issue when not using GMT. Can probably be removed.
 		narray = np.vstack((narray, nline))
-		np.savetxt(write_path + write_file, narray[1:,:], fmt='%d %.5f %.2f %.2f %.2f %.2f %.2f %.2f', header='Unix Time - Hours from 00 - Tfluid - Tshed - TF - HF - TG - HG')
+		np.savetxt(write_path + write_file + '.log', narray[1:,:], fmt='%d %.5f %.2f %.2f %.2f %.2f %.2f %.2f', header='Unix Time - Hours from 00 - Tfluid - Tshed - TF - HF - TG - HG')
 
 	hoursold = hours
 
@@ -161,7 +162,7 @@ while True:
 		axgh.legend(loc='lower right', frameon=False)
 
 		plt.tight_layout()
-		plt.savefig(write_path + 'env_' + thedate + '_02.png', dpi=300)
+		plt.savefig(write_path + write_file + '.png', dpi=300)
 		plt.savefig(write_path + '../current/environment_02.png', dpi=300)
 		plt.close()
 
