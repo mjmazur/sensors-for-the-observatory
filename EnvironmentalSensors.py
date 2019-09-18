@@ -35,6 +35,7 @@ write_path = '/home/emccd/enclosure-logs/' + thedate + '/'
 # Otherwise, create a new array for values.
 if os.path.isfile(write_path + write_file + '.log') == True:
 	narray = np.loadtxt(write_path + write_file + '.log', skiprows=1)
+	print('Loading old file...')
 else:
 	narray = np.full(8,-999.0)
 
