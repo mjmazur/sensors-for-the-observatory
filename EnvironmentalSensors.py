@@ -34,7 +34,7 @@ write_path = '/home/emccd/enclosure-logs/' + thedate + '/'
 # If the log file exists, open it and append new data to it.
 # Otherwise, create a new array for values.
 if os.path.isfile(write_path + write_file + '.log') == True:
-	narray = np.loadtxt(write_path + write_file + '.log', skiprows=0)
+	narray = np.loadtxt(write_path + write_file + '.log', skiprows=1)
 else:
 	narray = np.full(8,-999.0)
 
@@ -75,7 +75,6 @@ while True:
 
 	if hours > hoursold: # Fixes an issue when not using GMT. Can probably be removed.
 		narray = np.vstack((narray, nline))
-		print(narray)
 		np.savetxt(write_path + write_file + '.log', narray[1:,:], fmt='%d %.5f %.2f %.2f %.2f %.2f %.2f %.2f', header='Unix Time - Hours from 00 - Tfluid - Tshed - TF - HF - TG - HG')
 
 	hoursold = hours
