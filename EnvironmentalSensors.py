@@ -50,15 +50,19 @@ while True:
 		write_file = 'env_' + thedate + '_02'
 		narray = np.delete(narray, np.s_[1:], axis=0)
 
+	print(len(narray))
+	
 	values = getvalues()
 
 	# If the list of values is incomplete (less than 6 elements), read again
 	while len(values) != 6:
 		values = getvalues()
-		# print('re-get values!')
 
 	# Sometimes we see a spike in the one-wire temperature probe. Catch it and re-read if it happens
 	if values[0] == 99.0 or values[1] == 99.0 or values[2] == 99.0 or values[4] == 99.0:
+		while len(values) < 6:
+			values = getvalues()
+	elif len(narray) > 2 and abs(values[0] - narray(len(narray)-1,2)) > 5:
 		while len(values) < 6:
 			values = getvalues()
 
