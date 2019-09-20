@@ -50,8 +50,8 @@ while True:
 		write_file = 'env_' + thedate + '_02'
 		narray = np.delete(narray, np.s_[1:], axis=0)
 
-	print(len(narray))
-	
+	print(narray.shape[0])
+
 	values = getvalues()
 
 	# If the list of values is incomplete (less than 6 elements), read again
@@ -62,9 +62,9 @@ while True:
 	if values[0] == 99.0 or values[1] == 99.0 or values[2] == 99.0 or values[4] == 99.0:
 		while len(values) < 6:
 			values = getvalues()
-	elif len(narray) > 2 and abs(values[0] - narray(len(narray)-1,2)) > 5:
-		while len(values) < 6:
-			values = getvalues()
+	# elif len(narray) > 2 and abs(values[0] - narray(len(narray)-1,2)) > 5:
+	# 	while len(values) < 6:
+	# 		values = getvalues()
 
 	tnow = np.fromstring(strftime('%H %M %S', gmtime()), sep=' ') # Get current UTC
 	hours = tnow[0] + tnow[1]/60.0 + tnow[2]/3600.0 # Number of hours from 00 UTC
