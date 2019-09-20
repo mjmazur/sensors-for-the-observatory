@@ -63,7 +63,7 @@ while True:
 		values = getvalues()
 		while len(values) < 6:
 			values = getvalues()
-	elif len(narray) > 2 and abs(values[0] - narray[len(narray)-1,2)]) > 5:
+	elif len(narray) > 2 and abs(values[0] - narray[len(narray)-1,2]) > 5:
 		print('rapid rise in T')
 		values = getvalues()
 		while len(values) < 6:
